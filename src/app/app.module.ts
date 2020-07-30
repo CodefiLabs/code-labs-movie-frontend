@@ -10,11 +10,15 @@ import {
   faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash
 } from '@fortawesome/free-solid-svg-icons';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
