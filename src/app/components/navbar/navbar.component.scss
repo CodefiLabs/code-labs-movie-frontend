@@ -10,8 +10,26 @@
     border-radius: 25px;
     color: white;
     text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Raleway';
+}
+
+.btn-flix-navbar:hover, .btn-flix-navbar:not(:disabled):not(.disabled):active {
+    border-width: 3px;
+    background: transparent !important;
+    border-color: #FF4436;
 }
 
 .text-flix-red {
     color: #FF4436;
+}
+
+#account-dropdown {
+    .dropdown-menu {
+        background-color: 	rgb(56,56,56) !important;
+        color: white;
+    }
+    a {
+        text-transform: uppercase;
+    }
 }

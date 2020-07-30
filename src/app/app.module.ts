@@ -7,7 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faArrowRight,
-  faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash
+  faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash, faSignInAlt, faSignOutAlt, faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -34,7 +34,7 @@ export class AppModule {
     private library: FaIconLibrary
   ) {
     this.library.addIcons(faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faArrowRight,
-      faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash)
+      faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash, faSignInAlt, faSignOutAlt, faUserPlus)
   }
  }
 

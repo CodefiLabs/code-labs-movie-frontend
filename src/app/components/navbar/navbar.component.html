@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="#">
-        <img src="./assets/images/code-flix-logo.svg" width="150" height="30"/>
+        <img src="./assets/images/code-flix-logo.svg" width="150" height="30" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,27 +11,53 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">
                     <button class="btn btn-outline-primary btn-flix-navbar">All Movies
-                       <fa-icon [icon]="['fas', 'arrow-right']" size="sm" class="ml-2 text-flix-red"></fa-icon>
+                        <fa-icon [icon]="['fas', 'arrow-right']" size="sm" class="ml-2 text-flix-red"></fa-icon>
                     </button>
-                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Dropdown
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="#">
+                    <button class="btn btn-outline-primary btn-flix-navbar">Add New Movie
+                        <fa-icon [icon]="['fas', 'plus']" size="sm" class="ml-2 text-flix-red"></fa-icon>
+                    </button>
+                </a>
+            </li>
+            <li class="nav-item dropdown" id="account-dropdown">
+                <div ngbDropdown>
+                    <a class="nav-link mt-2 ml-4 mr-2" ngbDropdownToggle data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">
+                        <fa-icon [icon]="['fas', 'user']" size="lg"></fa-icon>
+                    </a>
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right text-center"
+                        aria-labelledby="accountDropdown" style="width: auto;">
+                        <a class="dropdown-item p-2 d-inline-flex">
+                            <div class="flex">
+                                <fa-icon [icon]="['fas', 'sign-in-alt']" size="lg"></fa-icon>
+                            </div>
+                            <div class="flex ml-auto mr-2">
+                                Login
+                            </div>
+                        </a>
+                        <hr>
+                        <a class="dropdown-item p-2 d-inline-flex">
+                            <div class="flex">
+                                <fa-icon [icon]="['fas', 'user-plus']" size="lg" class="mr-4"></fa-icon>
+                            </div>
+                            <div class="flex ml-auto mr-2">
+                                Sign Up
+                            </div>
+                        </a>
+                        <hr>
+                        <a class="dropdown-item p-2 d-inline-flex">
+                            <div class="flex">
+                                <fa-icon [icon]="['fas', 'sign-out-alt']" size="lg" class="mr-4"></fa-icon>
+                            </div>
+                            <div class="flex ml-auto mr-2">
+                                Logout
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
