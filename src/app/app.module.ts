@@ -9,10 +9,12 @@ import {
   faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faArrowRight,
   faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash
 } from '@fortawesome/free-solid-svg-icons';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
