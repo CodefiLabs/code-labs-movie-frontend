@@ -15,6 +15,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserService } from './shared/services/user.service'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
+    UserService
   ],
   bootstrap: [AppComponent]
 })
