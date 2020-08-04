@@ -19,7 +19,7 @@
                 <label class="label">Password</label>
                 <input [ngClass]="{'is-invalid': hasError && loginForm.get('password').errors}" class="form-control"
                   type="password" formControlName="password"
-                  placeholder="you@youremailaddress.com">
+                  placeholder="xxxxxxxxx">
                 <label class="form-error" *ngIf="hasError && loginForm.get('password').errors">
                   <span class="text-danger" *ngIf="loginForm.get('password').errors['required']" >
                     Password is required!
