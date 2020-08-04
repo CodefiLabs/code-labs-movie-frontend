@@ -18,6 +18,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './shared/services/user.service';
 import { LocalStorageService } from './shared/services/local-storage.service';
 import { AuthorizationHeaderService } from './shared/services/authorization-header.service';
+import { MovieService } from './shared/services/movie.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AuthorizationHeaderService } from './shared/services/authorization-head
   ],
   providers: [
     UserService,
+    MovieService,
     LocalStorageService,
     {
       provide: HTTP_INTERCEPTORS,
