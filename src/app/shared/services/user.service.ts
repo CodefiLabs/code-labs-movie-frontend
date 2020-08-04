@@ -24,6 +24,14 @@ export class UserService {
     this.currentUser = this.currentUserSubject.asObservable()
   }
 
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value // returns the currentUser value to components
+  }
+
+  setCurrentUser(user: User) {
+    this.currentUserSubject.next(user) // sets the currentUserSubject
+  }
+
   login(params) {
     return this.http.post<any>(`${this.userApi}/login`, params) // post the login params to the api
       .pipe(
