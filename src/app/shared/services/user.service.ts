@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { User } from '../models/user'
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class UserService {
   public currentUser: Observable<User>
   private userApi: string
   constructor(
+    private router: Router,
     private http: HttpClient,
     private storage: LocalStorageService
   ) {
@@ -46,6 +48,23 @@ export class UserService {
 
   logout(params) {
     return this.http.delete<any>(`${this.userApi}/logout`, params)
+    .pipe(
+      catchError(this.handleError), // catch and handle any errors returning from the api
+      map(x => { // map the successful logout()
+        if (x) {
+          this.removeCurrentUserAndRoute() // remove local storage vars and route back to login
+        }
+      })
+    )
+  }
+
+  removeCurrentUserAndRoute() {
+    // set the local storage vars as undefined, remove, and then route back to login
+    this.storage.setItem('currentUser', undefined)
+    this.storage.setItem('accessToken', undefined)
+    this.storage.removeItem('currentUser')
+    this.storage.removeItem('accessToken')
+    this.router.navigate(['/login', { success: true }])
   }
 
   handleError(error) {
