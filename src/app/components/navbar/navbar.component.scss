@@ -1,36 +1,44 @@
 .navbar {
-    height: 85px;
-    background-color: #222222 !important;
-    box-shadow: 0px 3px 19px #00000041;
+  height: 85px;
+  background-color: #222222 !important;
+  box-shadow: 0px 3px 19px #00000041;
 }
 
 .btn-flix-navbar {
-    border-color: #FF4436;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 25px;
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: 'Raleway';
+  border-color: #FF4436;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Raleway';
 }
 
-.btn-flix-navbar:hover, .btn-flix-navbar:not(:disabled):not(.disabled):active {
-    border-width: 3px;
-    background: transparent !important;
-    border-color: #FF4436;
+.btn-flix-navbar:hover,
+.btn-flix-navbar:not(:disabled):not(.disabled):active {
+  border-width: 3px;
+  background: transparent !important;
+  border-color: #FF4436;
 }
 
 .text-flix-red {
-    color: #FF4436;
+  color: #FF4436;
 }
 
 #account-dropdown {
-    .dropdown-menu {
-        background-color: 	rgb(56,56,56) !important;
-        color: white;
-    }
-    a {
-        text-transform: uppercase;
-    }
+  .dropdown-menu {
+    background-color: rgb(56, 56, 56) !important;
+    color: white;
+  }
+
+  a {
+    text-transform: uppercase;
+  }
+}
+
+.center-navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
 }
