@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { UserService } from '../shared/services/user.service';
+import { User } from '../shared/models/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   submitting = false
   hasError = false
   errorMsg: string
+  currentUser: User
   private subs = new Subscription()
   constructor(
     private fb: FormBuilder,
@@ -46,7 +48,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     const params = { email: form.email, password: form.password }
     this.subs.add(
       this.userService.login(params).subscribe(data => {
-        debugger
+        if (data) {
+          this.currentUser = data
+          this.submitting = false
+        }
       }, error => {
         if (error) {
           console.log(error)

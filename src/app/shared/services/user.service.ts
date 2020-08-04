@@ -10,14 +10,18 @@ export class UserService {
   constructor(
     private http: HttpClient
   ) {
-    this.userApi = `${environment.apiUrl}api/v1/login/`
+    this.userApi = `${environment.apiUrl}api/v1/users`
   }
 
   login(params) {
-    return this.http.post<any>(`${this.userApi}/sign_in`, params)
+    return this.http.post<any>(`${this.userApi}/login`, params)
+  }
+
+  signup(params) {
+    return this.http.post<any>(`${this.userApi}/create`, params)
   }
 
   logout(params) {
-    return this.http.delete<any>(`${this.userApi}/sign_out`, params)
+    return this.http.delete<any>(`${this.userApi}/logout`, params)
   }
 }

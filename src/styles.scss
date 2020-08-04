@@ -40,3 +40,8 @@
     border: darken(rgb(255, 68, 54), 10%);
     border-radius: 25px;
 }
+
+// input overide
+input, .form-control {
+    border-radius: 25px !important;
+}
