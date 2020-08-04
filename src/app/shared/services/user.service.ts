@@ -39,7 +39,7 @@ export class UserService {
         map(res => { // map the response before we return it to the component
           if (res && res.token) { // response is successful
             const newUser = new User(res) // map the res to the user model
-            this.storage.setItem('accessToken', res.accessToken) // set the res.token in the browser's local storage
+            this.storage.setItem('accessToken', res.token) // set the res.token in the browser's local storage
             this.storage.setItem('currentUser', newUser) // set the newUser in the browser's local storage
             this.currentUserSubject.next(newUser) // set the newUser in the currentUser subject/observable
             return { success: true, user: res } // return the success res and user to the login component
