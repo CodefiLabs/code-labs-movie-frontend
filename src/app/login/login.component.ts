@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/user';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   currentUser: User
   private subs = new Subscription()
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private userService: UserService
   ) { }
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
+    this.hasError = false
     this.submitting = true
     if (this.loginForm.invalid) {
       this.hasError = true
@@ -48,13 +51,21 @@ export class LoginComponent implements OnInit, OnDestroy {
     const params = { email: form.email, password: form.password }
     this.subs.add(
       this.userService.login(params).subscribe(data => {
-        if (data) {
-          this.currentUser = data
+        if (data && data.success && data.user) {
+          this.currentUser = data.user
           this.submitting = false
+          this.router.navigate(['/home'])
+        } else {
+          this.submitting = false
+          this.hasError = true
+          this.errorMsg = 'Email and Password combination do not exist in this system!'
         }
       }, error => {
         if (error) {
           console.log(error)
+          this.submitting = false
+          this.hasError = false
+          this.errorMsg = 'Email and Password combination do not exist in this system!'
         }
       })
     )
