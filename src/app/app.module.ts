@@ -12,11 +12,12 @@ import {
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './shared/services/user.service';
 import { LocalStorageService } from './shared/services/local-storage.service';
+import { AuthorizationHeaderService } from './shared/services/authorization-header.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,12 @@ import { LocalStorageService } from './shared/services/local-storage.service';
   ],
   providers: [
     UserService,
-    LocalStorageService
+    LocalStorageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationHeaderService,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

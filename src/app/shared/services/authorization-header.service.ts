@@ -32,7 +32,7 @@ export class AuthorizationHeaderService implements HttpInterceptor {
       }
     }
     if (user && token && found === false) { // if user, token, and not a login method append the auth header
-      const authReq = req.clone({ setHeaders: { 'Authorization': token } });
+      const authReq = req.clone({ setHeaders: { 'Authorization': `Bearer ${token}` } });
       return next.handle(authReq)
     } else {
       return next.handle(req)
