@@ -62,6 +62,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     )
   }
 
+  routeToAddNewMovie() {
+    this.router.navigate(['/movies/new'])
+  }
+
   ngOnDestroy() {
     this.subs.unsubscribe() // Destroy all subs to prevent memory leak
   }

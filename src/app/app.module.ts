@@ -20,6 +20,7 @@ import { LocalStorageService } from './shared/services/local-storage.service';
 import { AuthorizationHeaderService } from './shared/services/authorization-header.service';
 import { MovieService } from './shared/services/movie.service';
 import { MovieCardComponent } from './home/movie-card/movie-card.component';
+import { NewMovieComponent } from './movies/new-movie/new-movie.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MovieCardComponent } from './home/movie-card/movie-card.component';
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    NewMovieComponent
   ],
   imports: [
     BrowserModule,
