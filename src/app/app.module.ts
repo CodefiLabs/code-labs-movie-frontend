@@ -19,6 +19,7 @@ import { UserService } from './shared/services/user.service';
 import { LocalStorageService } from './shared/services/local-storage.service';
 import { AuthorizationHeaderService } from './shared/services/authorization-header.service';
 import { MovieService } from './shared/services/movie.service';
+import { MovieCardComponent } from './home/movie-card/movie-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MovieService } from './shared/services/movie.service';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    MovieCardComponent
   ],
   imports: [
     BrowserModule,

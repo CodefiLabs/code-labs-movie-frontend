@@ -4,6 +4,7 @@ import { UserService } from '../shared/services/user.service';
 import { MovieService } from '../shared/services/movie.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { Movie } from '../shared/models/movie';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  private currentUser: User
+  movies: Movie[] = []
+  currentUser: User
   private subs = new Subscription()
   constructor(
     private router: Router,
@@ -46,7 +48,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subs.add( // adds a new subscription to the array
       this.movieService.getAllMovies().subscribe(data => { // get all movies
         if (data) {
-          debugger
+          if (data.length) {
+            this.movies = data.map(x => new Movie(x)) // maps the movies as an array of the Movie type
+          } else {
+            this.movies = []
+          }
         }
       }, error => {
         if (error) {
