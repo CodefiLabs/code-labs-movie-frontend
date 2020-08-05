@@ -18,6 +18,13 @@ export class NewMovieComponent implements OnInit, OnDestroy {
   hasError = false;
   errorMsg: string;
   currentUser: User;
+  movieRatings = [
+    {id: 1, val: 'G'},
+    {id: 2, val: 'PG'},
+    {id: 3, val: 'PG-13'},
+    {id: 4, val: 'R'},
+    {id: 5, val: 'NC-17'}
+  ]
   private subs = new Subscription();
   constructor(
     private router: Router,
@@ -40,7 +47,7 @@ export class NewMovieComponent implements OnInit, OnDestroy {
       rating: ['', Validators.compose([Validators.required])],
       releaseDate: ['', Validators.compose([Validators.required])],
       totalGross: [0, Validators.compose([Validators.required])],
-      duration: ['', Validators.compose([Validators.required])],
+      duration: [0, Validators.compose([Validators.required])],
       img: ['', Validators.compose([Validators.required])],
       cast: ['', Validators.compose([Validators.required])],
       director: ['', Validators.compose([Validators.required])],
@@ -86,6 +93,14 @@ export class NewMovieComponent implements OnInit, OnDestroy {
         }
       )
     );
+  }
+
+  setRatingValue(rating: any) {
+    this.form.get('rating').setValue(rating.val)
+  }
+
+  cancel() {
+    this.form.reset()
   }
 
   ngOnDestroy() {

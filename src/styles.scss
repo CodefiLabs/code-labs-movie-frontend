@@ -31,13 +31,13 @@
 .btn-outline-primary {
     color: rgb(255, 68, 54);
     background: transparent;
-    border: rgb(255, 68, 54);
+    border-color: rgb(255, 68, 54);
     border-radius: 25px;
 }
 .btn-outline-primary:hover, .btn-outline-primary:not(:disabled):not(.disabled):active {
     color: darken(rgb(255, 68, 54), 10%);
     background: transparent;
-    border: darken(rgb(255, 68, 54), 10%);
+    border-color: darken(rgb(255, 68, 54), 10%);
     border-radius: 25px;
 }
 

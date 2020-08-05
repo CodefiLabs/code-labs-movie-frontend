@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "code-labs-movie-frontend"
+    }
+  },
+  "defaultProject": "code-labs-movie-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
