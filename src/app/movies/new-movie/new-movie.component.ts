@@ -1,10 +1,12 @@
 import { MovieService } from './../../shared/services/movie.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../shared/services/user.service';
 import { User } from '../../shared/models/user';
 import { Router } from '@angular/router';
+import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
+
 
 @Component({
   selector: 'app-new-movie',
@@ -18,6 +20,7 @@ export class NewMovieComponent implements OnInit, OnDestroy {
   hasError = false;
   errorMsg: string;
   currentUser: User;
+  // Static Movie Ratings List
   movieRatings = [
     {id: 1, val: 'G'},
     {id: 2, val: 'PG'},
@@ -25,6 +28,12 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     {id: 4, val: 'R'},
     {id: 5, val: 'NC-17'}
   ]
+  // Image Cropper Vars
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  @ViewChild('fileInput', {static: false}) fileInput: ElementRef
+  @ViewChild('cropper', {static: false}) cropper: ElementRef
+  @ViewChild(ImageCropperComponent, {static: false}) imageCropper: ImageCropperComponent
   private subs = new Subscription();
   constructor(
     private router: Router,
@@ -97,6 +106,41 @@ export class NewMovieComponent implements OnInit, OnDestroy {
 
   setRatingValue(rating: any) {
     this.form.get('rating').setValue(rating.val)
+  }
+
+  openFileInput() {
+    this.fileInput.nativeElement.click()
+  }
+
+  onSelectImage($event: ImageCroppedEvent) {
+    this.imageChangedEvent = $event;
+  }
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+
+  // ngx-image-cropper-methods
+
+  onImageCropChanged(event: ImageCroppedEvent) {
+      this.croppedImage = event.base64;
+  }
+
+  onImageCropClicked() {
+    this.form.get('img').setValue(this.croppedImage);
+    this.imageChangedEvent = null;
+  }
+
+  imageLoaded() {
+    // show cropper
+  }
+
+  cropperReady() {
+      // cropper ready
+  }
+
+  loadImageFailed() {
+      // show message
   }
 
   cancel() {

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
-  faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faArrowRight,
+  faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faArrowRight, faUpload,
   faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash, faSignInAlt, faSignOutAlt, faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +21,7 @@ import { AuthorizationHeaderService } from './shared/services/authorization-head
 import { MovieService } from './shared/services/movie.service';
 import { MovieCardComponent } from './home/movie-card/movie-card.component';
 import { NewMovieComponent } from './movies/new-movie/new-movie.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { NewMovieComponent } from './movies/new-movie/new-movie.component';
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ImageCropperModule
   ],
   providers: [
     UserService,
@@ -57,7 +59,7 @@ export class AppModule {
   constructor(
     private library: FaIconLibrary
   ) {
-    this.library.addIcons(faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faArrowRight,
+    this.library.addIcons(faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faArrowRight, faUpload,
       faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash, faSignInAlt, faSignOutAlt, faUserPlus)
   }
  }

@@ -89,11 +89,37 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <div class="col-12 col-md-6 end">
-                    <label class="label">Image Upload</label>
-                    <input [ngClass]="{'is-invalid': hasError && form.get('img').errors}" class="form-control"
-                      type="image" formControlName="duration"
-                      placeholder="">
+                  <div class="col-12">
+                    <label class="label" [ngClass]="{'text-danger': hasError && form.get('img').errors}">Image Upload</label>
+                    <div class="row">
+                      <div class="col-6">
+                        <button class="btn btn-primary mt-4" (click)="openFileInput()">
+                          <fa-icon [icon]="['fas', 'upload']" size="lg" class="text-white fa-upload"></fa-icon>
+                          <span class="ml-2">Select Image</span>
+                          <input #fileInput type="file" (change)="onSelectImage($event)" style="display:none;" />
+                        </button>
+                      </div>
+                      <div class="col-6" *ngIf="!imageChangedEvent && form.get('img').value">
+                        <img class="upload-icon" *ngIf="form.get('img').value"
+                        [src]="form.get('img').value" #loadedLogo alt="Movie Image">
+                      </div>
+                      <div class="col-6" *ngIf="imageChangedEvent">
+                        <image-cropper
+                        [imageChangedEvent]="imageChangedEvent"
+                        [maintainAspectRatio]="true"
+                        [aspectRatio]="3 / 4"
+                        format="png"
+                        [resizeToWidth]="181"
+                        (imageCropped)="onImageCropChanged($event)"
+                        (imageLoaded)="imageLoaded()"
+                        (cropperReady)="cropperReady()"
+                        (loadImageFailed)="loadImageFailed()"
+                      ></image-cropper>
+                      <button class="btn btn-outline-primary" (click)="onImageCropClicked()">
+                        Crop
+                      </button>
+                      </div>
+                    </div>
                     <label class="form-error" *ngIf="hasError && form.get('img').errors">
                       <span class="text-danger" *ngIf="form.get('img').errors['required']" >
                         Image is required!
