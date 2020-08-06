@@ -1,12 +1,17 @@
 import { MovieService } from './../../shared/services/movie.service';
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../shared/services/user.service';
 import { User } from '../../shared/models/user';
 import { Router } from '@angular/router';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
-
 
 @Component({
   selector: 'app-new-movie',
@@ -22,26 +27,27 @@ export class NewMovieComponent implements OnInit, OnDestroy {
   currentUser: User;
   // Static Movie Ratings List
   movieRatings = [
-    {id: 1, val: 'G'},
-    {id: 2, val: 'PG'},
-    {id: 3, val: 'PG-13'},
-    {id: 4, val: 'R'},
-    {id: 5, val: 'NC-17'}
-  ]
+    { id: 1, val: 'G' },
+    { id: 2, val: 'PG' },
+    { id: 3, val: 'PG-13' },
+    { id: 4, val: 'R' },
+    { id: 5, val: 'NC-17' },
+  ];
   // Image Cropper Vars
   imageChangedEvent: any = '';
   croppedImage: any = '';
-  @ViewChild('fileInput', {static: false}) fileInput: ElementRef
-  @ViewChild('cropper', {static: false}) cropper: ElementRef
-  @ViewChild(ImageCropperComponent, {static: false}) imageCropper: ImageCropperComponent
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
+  @ViewChild('cropper', { static: false }) cropper: ElementRef;
+  @ViewChild(ImageCropperComponent, { static: false })
+  imageCropper: ImageCropperComponent;
   private subs = new Subscription();
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private userService: UserService,
-    private movieService: MovieService,
+    private movieService: MovieService
   ) {
-    this.currentUser = this.userService.currentUserValue
+    this.currentUser = this.userService.currentUserValue;
   }
 
   ngOnInit(): void {
@@ -75,41 +81,67 @@ export class NewMovieComponent implements OnInit, OnDestroy {
       this.submitting = false;
       return;
     }
-    const form = this.form.value;
-    const params = {
-      title: form.title, description: form.description,
-      rating: form.rating, releaseDate: form.releaseDate,
-      totalGross: form.totalGross, duration: form.duration,
-      img: form.img, cast: form.cast, director: form.director
-    };
-    this.subs.add(
-      this.movieService.createMovie(params).subscribe(
-        (data) => {
-          if (data) {
-            debugger
-            this.currentUser = data.user;
-            this.submitting = false;
+    const imgUploadSuccess = this.uploadImage();
+    debugger;
+    if (imgUploadSuccess) {
+      const form = this.form.value;
+      const params = {
+        title: form.title,
+        description: form.description,
+        rating: form.rating,
+        release_date: form.releaseDate,
+        total_gross: form.totalGross,
+        duration: form.duration,
+        image: form.img,
+        cast: form.cast,
+        director: form.director,
+      };
+      this.subs.add(
+        this.movieService.createMovie(params).subscribe(
+          (data) => {
+            if (data) {
+              debugger;
+              this.currentUser = data.user;
+              this.submitting = false;
+            }
+          },
+          (error) => {
+            if (error) {
+              console.log(error);
+              this.submitting = false;
+              this.hasError = true;
+              this.errorMsg =
+                'Something went wrong while trying to create that movie!!';
+            }
           }
-        },
-        (error) => {
-          if (error) {
-            console.log(error);
-            this.submitting = false;
-            this.hasError = true;
-            this.errorMsg =
-              'Something went wrong while trying to create that movie!!';
-          }
-        }
-      )
-    );
+        )
+      );
+    } else {
+      return;
+    }
   }
 
   setRatingValue(rating: any) {
-    this.form.get('rating').setValue(rating.val)
+    this.form.get('rating').setValue(rating.val);
   }
 
+  // uploadMovieImage(params) {
+  //   const img = this.uploadMovieImage(params)
+  //   // this.subs.add(
+  //   //   this.movieService.uploadMovieImage(params).subscribe(data => {
+  //   //     if (data) {
+  //   //       debugger
+  //   //     }
+  //   //   }, error => {
+  //   //     if (error) {
+  //   //       console.log(error)
+  //   //     }
+  //   //   })
+  //   // )
+  // }
+
   openFileInput() {
-    this.fileInput.nativeElement.click()
+    this.fileInput.nativeElement.click();
   }
 
   onSelectImage($event: ImageCroppedEvent) {
@@ -123,7 +155,7 @@ export class NewMovieComponent implements OnInit, OnDestroy {
   // ngx-image-cropper-methods
 
   onImageCropChanged(event: ImageCroppedEvent) {
-      this.croppedImage = event.base64;
+    this.croppedImage = event.base64;
   }
 
   onImageCropClicked() {
@@ -131,20 +163,46 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     this.imageChangedEvent = null;
   }
 
+  uploadImage() {
+    let title;
+    title = this.form.get('title').value; // grabbing the title value from form
+    title = title.replace(/\s/g, '-'); // replaces spaces in title w/ '-'
+    title = title.toLowerCase(); // Lower Case the title
+    const name = title
+      ? title
+      : this.generateRandomString(14, '0123456789abcd'); // sets img name key or assigns random string
+    this.movieService.uploadMovieImage(this.croppedImage, name);
+    this.form
+      .get('img')
+      .setValue(
+        'https://code-labs-one-movie-images.s3.us-east-2.amazonaws.com/images/' +
+          name
+      );
+    return true;
+  }
+
+  generateRandomString(length, chars) {
+    let result = '';
+    for (let i = length; i > 0; --i) {
+      result += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return result;
+  }
+
   imageLoaded() {
     // show cropper
   }
 
   cropperReady() {
-      // cropper ready
+    // cropper ready
   }
 
   loadImageFailed() {
-      // show message
+    // show message
   }
 
   cancel() {
-    this.form.reset()
+    this.form.reset();
   }
 
   ngOnDestroy() {
