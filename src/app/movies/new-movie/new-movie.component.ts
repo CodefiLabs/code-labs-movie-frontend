@@ -12,6 +12,7 @@ import { UserService } from '../../shared/services/user.service';
 import { User } from '../../shared/models/user';
 import { Router } from '@angular/router';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-movie',
@@ -81,15 +82,14 @@ export class NewMovieComponent implements OnInit, OnDestroy {
       this.submitting = false;
       return;
     }
-    const imgUploadSuccess = this.uploadImage();
-    debugger;
+    const imgUploadSuccess = this.uploadImage()
     if (imgUploadSuccess) {
       const form = this.form.value;
       const params = {
         title: form.title,
         description: form.description,
         rating: form.rating,
-        release_date: form.releaseDate,
+        release_date: new Date(form.releaseDate),
         total_gross: form.totalGross,
         duration: form.duration,
         image: form.img,
@@ -100,9 +100,15 @@ export class NewMovieComponent implements OnInit, OnDestroy {
         this.movieService.createMovie(params).subscribe(
           (data) => {
             if (data) {
-              debugger;
-              this.currentUser = data.user;
-              this.submitting = false;
+              this.submitting = false
+              Swal.fire({
+                icon: 'success',
+                title: 'A new movie has been successfully added!',
+                showConfirmButton: false,
+                timer: 2000
+              }).then(() => {
+                this.form.reset()
+              })
             }
           },
           (error) => {
