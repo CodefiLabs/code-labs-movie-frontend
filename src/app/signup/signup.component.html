@@ -78,10 +78,20 @@
                     </span>
                 </label>
               </div>
-              <div class="form-footer-btns mt-5 mb-2">
-                <button type="submit" class="btn btn-primary btn-block" (click)="submitForm()">Sign Up<fa-icon
-                    *ngIf="submitting" [icon]="['fas', 'spinner']" size="lg" class="ml-2 fa-spinner" spin="true">
-                  </fa-icon></button>
+              <div class="form-footer-btns mt-5 mb-2 row">
+                  <div class="col-6">
+                    <button type="submit" class="btn btn-primary btn-block" (click)="submitForm()">Register<fa-icon
+                        *ngIf="submitting" [icon]="['fas', 'spinner']" size="lg" class="ml-2 fa-spinner" spin="true">
+                      </fa-icon></button>
+                  </div>
+                  <div class="col-6">
+                    <button type="submit" class="btn btn-outline-primary btn-block" (click)="cancelForm()">Cancel<fa-icon
+                        *ngIf="submitting" [icon]="['fas', 'spinner']" size="lg" class="ml-2 fa-spinner" spin="true">
+                      </fa-icon></button>
+                  </div>
+              </div>
+              <div class="col-12 text-center mt-4">
+                  <p class="form-bottom-p">Already signed up? <a class="form-link" [routerLink]="['/login']">Sign in here</a></p>
               </div>
           </form>
     </div>
