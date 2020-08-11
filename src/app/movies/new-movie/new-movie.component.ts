@@ -85,11 +85,14 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     const imgUploadSuccess = this.uploadImage()
     if (imgUploadSuccess) {
       const form = this.form.value;
+      const releaseDate = new Date(form.releaseDate)
+      const year = releaseDate.getFullYear()
       const params = {
         title: form.title,
         description: form.description,
         rating: form.rating,
-        release_date: new Date(form.releaseDate),
+        release_date: releaseDate,
+        year: year,
         total_gross: form.totalGross,
         duration: form.duration,
         image: form.img,

@@ -63,7 +63,7 @@
     </div>
 </nav>
 <nav *ngIf="!currentUser" class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand center-navbar-brand" href="#">
+    <a class="navbar-brand center-navbar-brand" [routerLink]="['/home']">
         <img src="./assets/images/code-flix-logo.svg" width="150" height="30" />
     </a>
 </nav>
