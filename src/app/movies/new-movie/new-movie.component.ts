@@ -134,21 +134,6 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     this.form.get('rating').setValue(rating.val);
   }
 
-  // uploadMovieImage(params) {
-  //   const img = this.uploadMovieImage(params)
-  //   // this.subs.add(
-  //   //   this.movieService.uploadMovieImage(params).subscribe(data => {
-  //   //     if (data) {
-  //   //       debugger
-  //   //     }
-  //   //   }, error => {
-  //   //     if (error) {
-  //   //       console.log(error)
-  //   //     }
-  //   //   })
-  //   // )
-  // }
-
   openFileInput() {
     this.fileInput.nativeElement.click();
   }
