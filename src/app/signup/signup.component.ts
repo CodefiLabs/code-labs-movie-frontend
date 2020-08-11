@@ -72,17 +72,13 @@ export class SignupComponent implements OnInit, OnDestroy {
           this.currentUser = data.user
           this.submitting = false
           this.router.navigate(['/home'])
-        } else {
-          this.submitting = false
-          this.hasError = true
-          this.errorMsg = 'Email and Password combination do not exist in this system!'
         }
       }, error => {
         if (error) {
           console.log(error)
           this.submitting = false
           this.hasError = false
-          this.errorMsg = 'Email and Password combination do not exist in this system!'
+          this.errorMsg = 'User already exists in this system! Please login!'
         }
       })
     )

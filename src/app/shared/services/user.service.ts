@@ -52,6 +52,18 @@ export class UserService {
 
   signup(params) {
     return this.http.post<any>(`${this.userApi}/create`, params)
+    .pipe(
+      catchError(this.handleError), // catch and handle any errors returning from the api
+      map(res => { // map the response before we return it to the component
+        if (res && res.token) { // response is successful
+          const newUser = new User(res) // map the res to the user model
+          this.storage.setItem('accessToken', res.token) // set the res.token in the browser's local storage
+          this.storage.setItem('currentUser', newUser) // set the newUser in the browser's local storage
+          this.currentUserSubject.next(newUser) // set the newUser in the currentUser subject/observable
+          return { success: true, user: res } // return the success res and user to the signup component
+        }
+      })
+    )
   }
 
   logoutUser() {
@@ -84,16 +96,15 @@ export class UserService {
   }
 
   handleError(error) {
-    let errorMessage = ''
+    let returnError
     if (error.error instanceof ErrorEvent) {
       // client-side error
-      errorMessage = `Error: ${error.error.message}`
+      returnError = {statusCode: error.error.statusCode, message: `Error: ${error.error.message}`}
     } else {
       // server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`
+      returnError = { statusCode: error.error.statusCode, message: `Error Code: ${error.status}\nMessage: ${error.message}`}
     }
-    console.log(errorMessage)
-    return throwError(errorMessage)
+    return throwError(returnError)
   }
 
 }
