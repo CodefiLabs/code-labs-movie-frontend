@@ -30,7 +30,7 @@
                     </a>
                     <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right text-center"
                         aria-labelledby="accountDropdown" style="width: auto;">
-                        <a class="dropdown-item p-2 d-inline-flex">
+                        <a class="dropdown-item p-2 d-inline-flex" [routerLink]="['login']">
                             <div class="flex">
                                 <fa-icon [icon]="['fas', 'sign-in-alt']" size="lg"></fa-icon>
                             </div>
@@ -39,7 +39,7 @@
                             </div>
                         </a>
                         <hr>
-                        <a class="dropdown-item p-2 d-inline-flex">
+                        <a class="dropdown-item p-2 d-inline-flex" [routerLink]="['signup']">
                             <div class="flex">
                                 <fa-icon [icon]="['fas', 'user-plus']" size="lg" class="mr-4"></fa-icon>
                             </div>
@@ -48,7 +48,7 @@
                             </div>
                         </a>
                         <hr>
-                        <a class="dropdown-item p-2 d-inline-flex">
+                        <a class="dropdown-item p-2 d-inline-flex" (click)="logoutUser()">
                             <div class="flex">
                                 <fa-icon [icon]="['fas', 'sign-out-alt']" size="lg" class="mr-4"></fa-icon>
                             </div>

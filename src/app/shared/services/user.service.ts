@@ -54,16 +54,24 @@ export class UserService {
     return this.http.post<any>(`${this.userApi}/create`, params)
   }
 
-  logout(params) {
-    return this.http.delete<any>(`${this.userApi}/logout`, params)
-    .pipe(
-      catchError(this.handleError), // catch and handle any errors returning from the api
-      map(x => { // map the successful logout()
-        if (x) {
-          this.removeCurrentUserAndRoute() // remove local storage vars and route back to login
-        }
-      })
-    )
+  logoutUser() {
+    this.logout().subscribe(data => {
+      // logout successful
+      if (data) {
+        this.removeCurrentUserAndRoute()
+      } else {
+        // logout unsuccesful, but we still want to remove the currentUser and accessToken
+        this.removeCurrentUserAndRoute()
+      }
+    }, error => {
+      if (error) {
+        this.removeCurrentUserAndRoute()
+      }
+    });
+  }
+
+  logout() {
+    return this.http.delete<any>(`${this.userApi}/logout`, {})
   }
 
   removeCurrentUserAndRoute() {

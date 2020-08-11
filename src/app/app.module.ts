@@ -22,6 +22,7 @@ import { MovieService } from './shared/services/movie.service';
 import { MovieCardComponent } from './home/movie-card/movie-card.component';
 import { NewMovieComponent } from './movies/new-movie/new-movie.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     FooterComponent,
     LoginComponent,
     MovieCardComponent,
-    NewMovieComponent
+    NewMovieComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
