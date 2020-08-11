@@ -90,6 +90,7 @@ export class UserService {
     // set the local storage vars as undefined, remove, and then route back to login
     this.storage.setItem('currentUser', undefined)
     this.storage.setItem('accessToken', undefined)
+    this.currentUserSubject.next(null)
     this.storage.removeItem('currentUser')
     this.storage.removeItem('accessToken')
     this.router.navigate(['/login', { success: true }])
