@@ -8,12 +8,21 @@ import { Movie } from 'src/app/shared/models/movie';
 })
 export class MovieCardComponent implements OnInit, OnChanges {
   @Input() movie: Movie
+  movieImg: string
   constructor() { }
 
   ngOnInit(): void {
   }
 
   ngOnChanges() {
+    if (this.movie) {
+      this.movieImg = this.movie.image
+    }
+  }
+
+
+  setDefaultPic() {
+    this.movieImg = 'assets/images/batman-vs-godzilla.png'
   }
 
 }

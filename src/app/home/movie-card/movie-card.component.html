@@ -7,8 +7,7 @@
                 <p class="card-description mt-4">{{movie.description}}</p>
             </div>
             <div class="ml-auto flex movie-img">
-                <!-- Below image is a place holder for now -->
-                <img class="img img-fluid" src="./assets/images/batman-vs-godzilla.png">
+                <img class="img img-fluid" [src]="movieImg" (error)="setDefaultPic()">
             </div>
         </div>
         <div class="movie-info w-100 d-inline-flex">
