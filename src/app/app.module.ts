@@ -23,6 +23,7 @@ import { MovieCardComponent } from './home/movie-card/movie-card.component';
 import { NewMovieComponent } from './movies/new-movie/new-movie.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { SignupComponent } from './signup/signup.component';
+import { SingleMovieComponent } from './movies/single-movie/single-movie.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SignupComponent } from './signup/signup.component';
     LoginComponent,
     MovieCardComponent,
     NewMovieComponent,
-    SignupComponent
+    SignupComponent,
+    SingleMovieComponent
   ],
   imports: [
     BrowserModule,
