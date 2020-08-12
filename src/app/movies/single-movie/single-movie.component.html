@@ -1,6 +1,6 @@
 <div class="container mb-3">
     <div class="row mt-5">
-        <div class="col-12 mt-5">
+        <div class="col-12 mt-5 mb-5">
             <div *ngIf="movie" class="card p-4">
                 <div class="d-inline-flex w-100">
                     <div class="flex">
@@ -39,8 +39,28 @@
                     </div>
                     <div class="col-12 mt-4 mb-4">
                         <p class="desc-text">Reviews</p>
-                        <hr>
-                        <p class="movie-text">{{movie.rating}}</p>
+                        <app-review-card [reviews]="reviews"></app-review-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="currentUser" class="col-12 mb-5 d-inline-flex">
+            <div class="flex">
+                <button class="btn btn-primary" (click)="routeToWriteReview()">Write Review
+                    <fa-icon [icon]="['fas', 'star']" size="sm" class="ml-2 text-white"></fa-icon>
+                </button>
+            </div>
+            <div *ngIf="currentUser.id === movie.user_id" class="flex ml-auto">
+                <div class="w-100 d-inline-flex">
+                    <div class="flex">
+                        <button class="btn btn-outline-primary" (click)="editMovie()">Edit Movie
+                            <fa-icon [icon]="['fas', 'pen']" size="sm" class="ml-2"></fa-icon>
+                        </button>
+                    </div>
+                    <div class="flex ml-4">
+                        <button class="btn btn-outline-primary" (click)="deleteMovie()">Delete Movie
+                            <fa-icon [icon]="['fas', 'trash-alt']" size="sm" class="ml-2"></fa-icon>
+                        </button>
                     </div>
                 </div>
             </div>

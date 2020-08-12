@@ -1,9 +1,11 @@
+import { UserService } from 'src/app/shared/services/user.service';
+import { User } from 'src/app/shared/models/user';
 import { Review } from './../../shared/models/review';
 import { Subscription } from 'rxjs';
 import { MovieService } from './../../shared/services/movie.service';
 import { Movie } from 'src/app/shared/models/movie';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-single-movie',
@@ -15,11 +17,16 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
   movieImg: string
   reviews: Review[] = []
   avgMovieRating = 5.0
+  currentUser: User
   private subs = new Subscription()
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
+    private userService: UserService,
     private movieService: MovieService
-  ) { }
+  ) {
+    this.currentUser = this.userService.currentUserValue
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(movie => {
@@ -65,6 +72,14 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
   setDefaultPic() {
     this.movieImg = 'assets/images/batman-vs-godzilla.png'
   }
+
+  routeToWriteReview() {
+    this.router.navigate(['/reviews/' + this.movie.id + '/new'])
+  }
+
+  editMovie() {}
+
+  deleteMovie() {}
 
   ngOnDestroy() {
     this.subs.unsubscribe()

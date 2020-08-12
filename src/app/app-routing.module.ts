@@ -1,3 +1,4 @@
+import { NewReviewComponent } from './reviews/new-review/new-review.component';
 import { SingleMovieComponent } from './movies/single-movie/single-movie.component';
 import { SignupComponent } from './signup/signup.component';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'movies/:id',
     component: SingleMovieComponent
+  },
+  {
+    path: 'reviews/:id/new',
+    component: NewReviewComponent
   }
 ];
 

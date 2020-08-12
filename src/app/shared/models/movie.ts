@@ -1,5 +1,6 @@
 export class Movie {
     id: number
+    user_id: number
     cast: string
     description: string
     director: string
@@ -14,17 +15,18 @@ export class Movie {
     updated_at: string
     release_date: string
     constructor({
-        id = 0,
+        id = null,
+        user_id = null,
         cast = '',
         description = '',
         director = '',
         image = '',
         title = '',
-        year = 0,
+        year = null,
         parental_rating = '',
-        rating = 0,
-        duration = 0,
-        total_gross = 0,
+        rating = null,
+        duration = null,
+        total_gross = null,
         created_at = '',
         updated_at = '',
         release_date = '',
@@ -32,6 +34,7 @@ export class Movie {
     }) {
         Object.assign(this, rest)
         this.id = id
+        this.user_id = user_id
         this.cast = cast
         this.description = description
         this.director = director

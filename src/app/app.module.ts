@@ -25,6 +25,9 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { SignupComponent } from './signup/signup.component';
 import { SingleMovieComponent } from './movies/single-movie/single-movie.component';
 import { InputStarRatingComponent } from './movies/input-star-rating/input-star-rating.component';
+import { ReviewCardComponent } from './movies/review-card/review-card.component';
+import { TimeAgoPipe } from './shared/pipes/time-ago.pipe';
+import { NewReviewComponent } from './reviews/new-review/new-review.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { InputStarRatingComponent } from './movies/input-star-rating/input-star-
     NewMovieComponent,
     SignupComponent,
     SingleMovieComponent,
-    InputStarRatingComponent
+    InputStarRatingComponent,
+    ReviewCardComponent,
+    TimeAgoPipe,
+    NewReviewComponent
   ],
   imports: [
     BrowserModule,
