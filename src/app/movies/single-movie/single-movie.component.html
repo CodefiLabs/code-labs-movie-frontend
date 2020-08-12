@@ -17,27 +17,27 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 mt-4 mb-4">
                         <p class="desc-text">Cast</p>
                         <hr>
                         <p class="movie-text">{{movie.cast}}</p>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 mt-4 mb-4">
                         <p class="desc-text">Director</p>
                         <hr>
                         <p class="movie-text">{{movie.director}}</p>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 mt-4 mb-4">
                         <p class="desc-text">Total Gross</p>
                         <hr>
                         <p class="movie-text">{{movie.total_gross | currency}}</p>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 mt-4 mb-4">
                         <p class="desc-text">Average Rating</p>
                         <hr>
-                        <p class="movie-text">{{movie.rating}}</p>
+                        <app-input-star-rating [rating]="avgMovieRating" [starCount]="5" [padding]="0"></app-input-star-rating>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 mt-4 mb-4">
                         <p class="desc-text">Reviews</p>
                         <hr>
                         <p class="movie-text">{{movie.rating}}</p>
