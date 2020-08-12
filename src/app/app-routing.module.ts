@@ -1,3 +1,4 @@
+import { SingleMovieComponent } from './movies/single-movie/single-movie.component';
 import { SignupComponent } from './signup/signup.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -29,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'movies/:id',
-    component: NewMovieComponent
+    component: SingleMovieComponent
   }
 ];
 

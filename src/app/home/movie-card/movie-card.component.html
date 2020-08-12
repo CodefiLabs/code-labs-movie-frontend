@@ -1,5 +1,5 @@
 <div *ngIf="movie" class="card w-100">
-    <div class="card-body">
+    <div class="card-body" (click)="routeToViewMovie(movie.id)">
         <div class="d-inline-flex w-100">
             <div class="flex">
                 <h5 class="card-title">{{movie.title}}<span class="ml-2 card-year">({{movie.year}})</span></h5>
