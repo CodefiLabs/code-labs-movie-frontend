@@ -28,6 +28,8 @@ import { InputStarRatingComponent } from './movies/input-star-rating/input-star-
 import { ReviewCardComponent } from './movies/review-card/review-card.component';
 import { TimeAgoPipe } from './shared/pipes/time-ago.pipe';
 import { NewReviewComponent } from './reviews/new-review/new-review.component';
+import { MovieReviewsComponent } from './movies/movie-reviews/movie-reviews.component';
+import { SingleReviewCardComponent } from './movies/single-review-card/single-review-card.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { NewReviewComponent } from './reviews/new-review/new-review.component';
     InputStarRatingComponent,
     ReviewCardComponent,
     TimeAgoPipe,
-    NewReviewComponent
+    NewReviewComponent,
+    MovieReviewsComponent,
+    SingleReviewCardComponent
   ],
   imports: [
     BrowserModule,

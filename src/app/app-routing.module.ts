@@ -1,3 +1,4 @@
+import { MovieReviewsComponent } from './movies/movie-reviews/movie-reviews.component';
 import { NewReviewComponent } from './reviews/new-review/new-review.component';
 import { SingleMovieComponent } from './movies/single-movie/single-movie.component';
 import { SignupComponent } from './signup/signup.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'movies/:id',
     component: SingleMovieComponent
+  },
+  {
+    path: 'movies/:id/reviews',
+    component: MovieReviewsComponent
   },
   {
     path: 'reviews/:id/new',

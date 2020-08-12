@@ -9,6 +9,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 })
 export class ReviewCardComponent implements OnInit, OnChanges {
   @Input() reviews: Review[] = []
+  @Input() movieId: number
   firstReview: Review
   reviewCount: number
   reviewCountString: string
@@ -36,7 +37,9 @@ export class ReviewCardComponent implements OnInit, OnChanges {
   }
 
 
-  routeToAllReviews() { }
+  routeToAllReviews() { 
+    this.router.navigate(['/movies/' + this.movieId + '/reviews' ])
+  }
 
 
 }

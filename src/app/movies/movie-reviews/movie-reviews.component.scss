@@ -5,7 +5,10 @@
     font-family: 'Bitter';
     font-weight: bold;
     font-size: 38px;
-    color: #FF4436;
+    color: #777777;
+    span {
+        color: #FF4436;
+    }
 }
 
 .release-date, .movie-rating, .movie-duration {

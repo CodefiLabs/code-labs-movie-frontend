@@ -1,7 +1,6 @@
 import { Movie } from 'src/app/shared/models/movie';
-import { ReviewService } from './../../shared/services/review.service';
 import { MovieService } from './../../shared/services/movie.service';
-import { ReviewService } from './../../shared/services/movie.service';
+import { ReviewService } from './../../shared/services/review.service';
 import {
   Component,
   OnInit,
