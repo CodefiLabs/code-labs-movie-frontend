@@ -25,6 +25,8 @@
     background: rgb(255, 68, 54);
     border: rgb(255, 68, 54);
     border-radius: 25px;
+    min-width: 125px;
+    min-height: 40px;;
 }
 .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active {
     color: white;
@@ -42,6 +44,8 @@
     border-color: rgb(255, 68, 54);
     border-radius: 25px;
     border-width: 2px;
+    min-width: 125px;
+    min-height: 40px;;
 }
 .btn-outline-primary:hover, .btn-outline-primary:not(:disabled):not(.disabled):active {
     color: darken(rgb(255, 68, 54), 10%);

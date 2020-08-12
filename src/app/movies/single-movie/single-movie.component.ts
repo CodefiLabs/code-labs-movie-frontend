@@ -61,8 +61,8 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
   }
 
   computeTheAverageReviewRating(reviews: Review[]) {
-    const totalReviews = reviews.length
-    let totalRating
+    const totalReviews = reviews.length || 0
+    let totalRating = 0
     this.reviews.forEach(x => {
       totalRating += x.rating
     })

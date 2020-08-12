@@ -5,8 +5,8 @@
                 <div class="flex">
                     <app-input-star-rating [rating]="firstReview.rating" [starCount]="5" [padding]="0" [size]="24"></app-input-star-rating>
                 </div>
-                <div class="flex">
-                    <p class="review-author">by {{firstReview.user_nickname}}<span>{{firstReview.updated_at | timeAgo}}</span></p>
+                <div class="flex ml-2">
+                    <p class="review-author mt-2">by {{firstReview.user_nickname}}<span class="ml-2">{{firstReview.updated_at | timeAgo}}</span></p>
                 </div>
             </div>
             <div class="col-12 mt-4 mb-4">
