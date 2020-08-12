@@ -8,15 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class InputStarRatingComponent implements OnInit {
   @Input() rating: number
   @Input() starCount: number
-  @Input() color = 'gold'
   @Input() padding: number
-
-  snackBarDuration = 2000
+  @Input() size: number
   ratingArr = []
 
   constructor() {
   }
-
 
   ngOnInit() {
     for (let index = 0; index < this.starCount; index++) {
@@ -29,6 +26,22 @@ export class InputStarRatingComponent implements OnInit {
       return 'star'
     } else {
       return 'star-half-alt'
+    }
+  }
+
+  getSizeStyles() {
+    if (this.size &&  this.size !== 0) {
+      return {
+        fontSize: `${this.size}px`,
+        width: `${this.size}px`,
+        height: `${this.size}px`
+      }
+    } else {
+      return {
+        fontSize: `24px`,
+        width: `24px`,
+        height: `24px`
+      }
     }
   }
 
