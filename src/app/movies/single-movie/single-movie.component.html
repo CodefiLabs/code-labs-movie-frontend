@@ -1,1 +1,49 @@
-<p>single-movie works!</p>
+<div class="container mb-3">
+    <div class="row mt-5">
+        <div class="col-12 mt-5">
+            <div *ngIf="movie" class="card p-4">
+                <div class="d-inline-flex w-100">
+                    <div class="flex">
+                        <h5 class="movie-title">{{movie.title}}</h5>
+                        <h6 class="release-date">Released:<span class="rd-bold ml-2">{{movie.release_date | date: 'MMMM dd, yyyy'}}</span></h6>
+                        <h6 class="movie-description mt-4">{{movie.description}}</h6>
+                        <div class="d-inline-flex w-100 mt-4">
+                            <p class="flex movie-rating">Rating: <span class="mr-bold ml-2">{{movie.rating}}</span></p>
+                            <p class="flex movie-duration ml-5">Duration: <span class="md-bold ml-2">{{movie.duration}}</span></p>
+                        </div>
+                    </div>
+                    <div class="ml-auto flex movie-img">
+                        <img class="img img-fluid" [src]="movieImg" (error)="setDefaultPic()">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="desc-text">Cast</p>
+                        <hr>
+                        <p class="movie-text">{{movie.cast}}</p>
+                    </div>
+                    <div class="col-12">
+                        <p class="desc-text">Director</p>
+                        <hr>
+                        <p class="movie-text">{{movie.director}}</p>
+                    </div>
+                    <div class="col-12">
+                        <p class="desc-text">Total Gross</p>
+                        <hr>
+                        <p class="movie-text">{{movie.total_gross | currency}}</p>
+                    </div>
+                    <div class="col-12">
+                        <p class="desc-text">Average Rating</p>
+                        <hr>
+                        <p class="movie-text">{{movie.rating}}</p>
+                    </div>
+                    <div class="col-12">
+                        <p class="desc-text">Reviews</p>
+                        <hr>
+                        <p class="movie-text">{{movie.rating}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

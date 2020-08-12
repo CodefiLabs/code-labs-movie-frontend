@@ -20,7 +20,7 @@ export class MovieService {
   }
 
   getMovieById(params) {
-    return this.http.get<any>(`${this.movieApi}/show/${params.id}`);
+    return this.http.get<any>(`${this.movieApi}/show?id=${params.id}`);
   }
 
   createMovie(params) {

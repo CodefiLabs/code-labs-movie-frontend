@@ -1,5 +1,6 @@
 export class Movie {
     id: number
+    cast: string
     description: string
     director: string
     image: string
@@ -11,8 +12,10 @@ export class Movie {
     total_gross: number
     created_at: string
     updated_at: string
+    release_date: string
     constructor({
         id = 0,
+        cast = '',
         description = '',
         director = '',
         image = '',
@@ -24,10 +27,12 @@ export class Movie {
         total_gross = 0,
         created_at = '',
         updated_at = '',
+        release_date = '',
         ...rest
     }) {
         Object.assign(this, rest)
         this.id = id
+        this.cast = cast
         this.description = description
         this.director = director
         this.image = image
@@ -39,6 +44,7 @@ export class Movie {
         this.total_gross = total_gross
         this.created_at = created_at
         this.updated_at = updated_at
+        this.release_date = release_date
     }
 
 }
