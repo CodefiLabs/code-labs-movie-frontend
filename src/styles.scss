@@ -66,3 +66,10 @@ input,
 .form-control {
   border-radius: 25px !important;
 }
+
+// overides for small devices
+@media (max-width: 576px) {
+    .form {
+      max-width: 95vw;
+    }
+}
