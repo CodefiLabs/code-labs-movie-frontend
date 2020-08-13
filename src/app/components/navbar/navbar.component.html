@@ -11,7 +11,7 @@
                     </button>
                 </a>
             </li>
-            <li class="nav-item active d-block d-lg-none">
+            <li class="nav-item active icon d-block d-lg-none">
                 <a class="nav-link" [routerLink]="['/home']">
                     <fa-stack>
                         <fa-icon [icon]="['fas', 'circle']" class="text-flix-red" stackItemSize="2x"></fa-icon>
@@ -26,7 +26,7 @@
                     </button>
                 </a>
             </li>
-            <li class="nav-item active mr-2 d-block d-lg-none">
+            <li class="nav-item icon active d-block d-lg-none">
                 <a class="nav-link" [routerLink]="['/home']">
                     <fa-stack>
                         <fa-icon [icon]="['fas', 'circle']" class="text-flix-red" stackItemSize="2x"></fa-icon>
@@ -39,11 +39,11 @@
                     Hi, {{currentUser.nickname}}!
                 </a>
             </li>
-            <li class="nav-item active mt-2">
+            <li class="nav-item small ml-small-10 active mt-2">
                 <a class="nav-link text-uppercase vl-red">
                 </a>
             </li>
-            <li class="nav-item active mt-2">
+            <li class="nav-item small active mt-2 w-small">
                 <a class="nav-link text-uppercase" (click)="logoutUser()">
                     SIGN OUT
                 </a>
@@ -51,7 +51,7 @@
         </ul>
     </div>
 </nav>
-<nav *ngIf="!currentUser" class="navbar navbar-expand-lg navbar-dark">
+<nav *ngIf="!currentUser" class="navbar navbar-expand navbar-dark">
     <a class="navbar-brand" [routerLink]="['/home']">
         <img src="./assets/images/code-flix-logo.svg" width="150" height="30" />
     </a>
@@ -63,7 +63,7 @@
                 </button>
             </a>
         </li>
-        <li class="nav-item active mr-5 d-block d-lg-none">
+        <li class="nav-item icon active d-block d-lg-none">
             <a class="nav-link" [routerLink]="['/home']">
                 <fa-stack>
                     <fa-icon [icon]="['fas', 'circle']" class="text-flix-red" stackItemSize="2x"></fa-icon>
@@ -71,16 +71,16 @@
                 </fa-stack>
             </a>
         </li>
-        <li class="nav-item active mt-2">
+        <li class="nav-item small ml-small-20 active mt-2">
             <a class="nav-link text-uppercase" [routerLink]="['/login']">
                 Sign In
             </a>
         </li>
-        <li class="nav-item active mt-2">
+        <li class="nav-item small active mt-2">
             <a class="nav-link text-uppercase vl-red">
             </a>
         </li>
-        <li class="nav-item active mt-2">
+        <li class="nav-item small active mt-2">
             <a class="nav-link text-uppercase" [routerLink]="['/signup']">
                 Sign up
             </a>

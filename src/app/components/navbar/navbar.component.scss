@@ -67,12 +67,36 @@ li {
 }
 
 @media (max-width: 767px) {
+  .navbar {
+    padding-right: 8px;
+    height: auto;
+  }
   .navbar-brand {
     img {
-      max-width: 120px;
+      max-width: 100px;
     }
   }
   .nav-link {
     font-size: 14px;
+  }
+  .nav-item.icon {
+    font-size: 18px;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    width: 30px;
+  }
+  .nav-item.small {
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    a {
+      padding: 2px;
+      padding-top: 12px;
+    }
+  }
+  .ml-small-20 {
+    margin-left: 20px;
+  }
+  .ml-small-10 {
+    margin-left: 10px;
   }
 }
