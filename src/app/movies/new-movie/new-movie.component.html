@@ -32,15 +32,9 @@
                 <div class="form-group row">
                   <div class="col-12 col-md-6 end">
                     <label class="label">Rating</label>
-                      <!-- <div ngbDropdown class="d-inline-block">
-                        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                          <button *ngFor="let rating of movieRatings" ngbDropdownItem (click)="setRatingValue(rating)">{{rating.val}}</button>
-                        </div>
-                      </div> -->
                       <select [ngClass]="{'is-invalid': hasError && form.get('rating').errors}" class="form-control"
                       type="text" formControlName="rating">
-                        <option *ngFor="let rating of movieRatings" [ngValue]="rating">{{rating.val}}</option>
+                        <option *ngFor="let rating of movieRatings" [ngValue]="rating.val">{{rating.val}}</option>
                       </select>
                     <label class="form-error" *ngIf="hasError && form.get('rating').errors">
                       <span class="text-danger" *ngIf="form.get('rating').errors['required']" >

@@ -90,7 +90,8 @@ export class NewMovieComponent implements OnInit, OnDestroy {
       const params = {
         title: form.title,
         description: form.description,
-        rating: form.rating,
+        rating: 5,
+        parental_rating: form.rating,
         release_date: releaseDate,
         year: year,
         total_gross: form.totalGross,
@@ -128,10 +129,6 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     } else {
       return;
     }
-  }
-
-  setRatingValue(rating: any) {
-    this.form.get('rating').setValue(rating.val);
   }
 
   openFileInput() {
