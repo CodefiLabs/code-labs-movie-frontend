@@ -13,6 +13,7 @@ import { User } from '../../shared/models/user';
 import { Router } from '@angular/router';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 import Swal from 'sweetalert2';
+import { setClassMetadata } from '@angular/core/src/r3_symbols';
 
 @Component({
   selector: 'app-new-movie',
@@ -34,6 +35,9 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     { id: 4, val: 'R' },
     { id: 5, val: 'NC-17' },
   ];
+  // s3 Vars
+  accessKey: string
+  secretKey: string
   // Image Cropper Vars
   imageChangedEvent: any = '';
   croppedImage: any = '';
@@ -52,8 +56,22 @@ export class NewMovieComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.getS3Keys()
     this.createFormControls();
     this.createForm();
+  }
+
+  getS3Keys() {
+    this.movieService.getUploadCredentials().subscribe(data => {
+      if (data) {
+        this.accessKey = data.accessKey
+        this.secretKey = data.secretKey
+      }
+    }, error => {
+      if (error) {
+        console.error(error)
+      }
+    })
   }
 
   createFormControls() {
@@ -162,7 +180,7 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     const name = title
       ? title
       : this.generateRandomString(14, '0123456789abcd'); // sets img name key or assigns random string
-    this.movieService.uploadMovieImage(this.croppedImage, name);
+    this.movieService.uploadMovieImage(this.croppedImage, name, this.accessKey, this.secretKey);
     this.form
       .get('img')
       .setValue(

@@ -15,6 +15,10 @@ export class MovieService {
     this.movieApi = `${environment.apiUrl}api/v1/movies`;
   }
 
+  getUploadCredentials() {
+    return this.http.get<any>(`${this.movieApi}/get_upload_credentials`);
+  }
+
   getAllMovies() {
     return this.http.get<any>(`${this.movieApi}/index`);
   }
@@ -35,11 +39,11 @@ export class MovieService {
     return this.http.delete<any>(`${this.movieApi}/${params.id}`);
   }
 
-  uploadMovieImage(file, name) {
+  uploadMovieImage(file, name, accessKey, secretKey) {
     const buf = new Buffer(file.replace(/^data:image\/\w+;base64,/, ''), 'base64')
     const bucket = new S3({
-      accessKeyId: 'AKIARVMY25IMSSLFJXEK',
-      secretAccessKey: 'mTi3i9uX5h5W+ErQTDjbLdAHIMkQac4o53L5IFnJ',
+      accessKeyId: accessKey,
+      secretAccessKey: secretKey,
       region: 'us-east-2',
     });
     const params = {
