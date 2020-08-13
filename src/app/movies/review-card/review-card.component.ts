@@ -36,10 +36,8 @@ export class ReviewCardComponent implements OnInit, OnChanges {
     }
   }
 
-
-  routeToAllReviews() { 
+  routeToAllReviews() {
     this.router.navigate(['/movies/' + this.movieId + '/reviews' ])
   }
-
 
 }

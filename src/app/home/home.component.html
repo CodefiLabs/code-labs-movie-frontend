@@ -1,11 +1,4 @@
 <div class="container mb-3">
-    <div class="row">
-        <div class="col-12 mt-5 d-inline-flex">
-            <div class="flex ml-auto">
-                Placeholder for search input
-            </div>
-        </div>
-    </div>
     <div class="row card-row">
         <div *ngFor="let movie of movies" class="col-12 mt-5">
             <app-movie-card [movie]="movie"></app-movie-card>

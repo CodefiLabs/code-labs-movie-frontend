@@ -49,3 +49,8 @@
 .dropdown-item:hover {
   color: black;
 }
+.vl-red::after {
+    content: '|';
+    color: #FF4436;
+    height: 20px;
+}

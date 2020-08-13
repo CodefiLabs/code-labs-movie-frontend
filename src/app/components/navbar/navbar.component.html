@@ -15,37 +15,32 @@
                     </button>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-5">
                 <a class="nav-link" [routerLink]="['/movies/new']">
                     <button class="btn btn-outline-primary btn-flix-navbar">Add New Movie
                         <fa-icon [icon]="['fas', 'plus']" size="sm" class="ml-2 text-flix-red"></fa-icon>
                     </button>
                 </a>
             </li>
-            <li class="nav-item dropdown" id="account-dropdown">
-                <div ngbDropdown>
-                    <a class="nav-link mt-2 ml-4 mr-2" ngbDropdownToggle data-toggle="dropdown"
-                        role="button" aria-haspopup="true" aria-expanded="false">
-                        <fa-icon [icon]="['fas', 'user']" size="lg"></fa-icon>
-                    </a>
-                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right text-center"
-                        aria-labelledby="accountDropdown" style="width: auto;">
-                        <a class="dropdown-item p-2 d-inline-flex" (click)="logoutUser()">
-                            <div class="flex">
-                                <fa-icon [icon]="['fas', 'sign-out-alt']" size="lg" class="mr-4"></fa-icon>
-                            </div>
-                            <div class="flex ml-auto mr-2">
-                                Logout
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <li class="nav-item active mt-2">
+                <a class="nav-link text-uppercase">
+                    Hi, {{currentUser.nickname}}!
+                </a>
+            </li>
+            <li class="nav-item active mt-2">
+                <a class="nav-link text-uppercase vl-red">
+                </a>
+            </li>
+            <li class="nav-item active mt-2">
+                <a class="nav-link text-uppercase" (click)="logoutUser()">
+                    SIGN OUT
+                </a>
             </li>
         </ul>
     </div>
 </nav>
 <nav *ngIf="!currentUser" class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand center-navbar-brand" [routerLink]="['/home']">
+    <a class="navbar-brand" [routerLink]="['/home']">
         <img src="./assets/images/code-flix-logo.svg" width="150" height="30" />
     </a>
     <ul class="navbar-nav ml-auto">
@@ -56,33 +51,19 @@
                 </button>
             </a>
         </li>
-        <li class="nav-item dropdown" id="account-dropdown">
-            <div ngbDropdown>
-                <a class="nav-link mt-2 ml-4 mr-2" ngbDropdownToggle data-toggle="dropdown"
-                    role="button" aria-haspopup="true" aria-expanded="false">
-                    <fa-icon [icon]="['fas', 'user']" size="lg"></fa-icon>
-                </a>
-                <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right text-center"
-                    aria-labelledby="accountDropdown" style="width: auto;">
-                    <a class="dropdown-item p-2 d-inline-flex" [routerLink]="['login']">
-                        <div class="flex">
-                            <fa-icon [icon]="['fas', 'sign-in-alt']" size="lg"></fa-icon>
-                        </div>
-                        <div class="flex ml-auto mr-2">
-                            Login
-                        </div>
-                    </a>
-                    <hr>
-                    <a class="dropdown-item p-2 d-inline-flex" [routerLink]="['signup']">
-                        <div class="flex">
-                            <fa-icon [icon]="['fas', 'user-plus']" size="lg" class="mr-4"></fa-icon>
-                        </div>
-                        <div class="flex ml-auto mr-2">
-                            Sign Up
-                        </div>
-                    </a>
-                </div>
-            </div>
+        <li class="nav-item active mt-2">
+            <a class="nav-link text-uppercase" [routerLink]="['/login']">
+                Sign In
+            </a>
+        </li>
+        <li class="nav-item active mt-2">
+            <a class="nav-link text-uppercase vl-red">
+            </a>
+        </li>
+        <li class="nav-item active mt-2">
+            <a class="nav-link text-uppercase" [routerLink]="['/signup']">
+                Sign up
+            </a>
         </li>
     </ul>
 </nav>

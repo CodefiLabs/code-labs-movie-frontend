@@ -3,7 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/user';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,10 +21,22 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private userService: UserService
   ) { }
 
   ngOnInit(): void {
+    const loggedOut = this.route.snapshot.params.success
+    if (loggedOut) {
+      Swal.fire({
+        icon: 'success',
+        title: 'You Have Been Successfully Logged Out!',
+        showConfirmButton: false,
+        timer: 2000
+      }).then(() => {
+        this.router.navigate(['/login'])
+      })
+    }
     this.createFormControls()
     this.createForm()
   }
