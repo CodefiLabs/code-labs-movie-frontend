@@ -30,7 +30,7 @@
   background: rgb(255, 68, 54);
   border: rgb(255, 68, 54);
   border-radius: 25px;
-  min-width: 150px;
+  min-width: 100px;
   min-height: 40px;
 }
 .btn-primary:hover,
@@ -50,7 +50,7 @@
   border-color: rgb(255, 68, 54);
   border-radius: 25px;
   border-width: 2px;
-  min-width: 150px;
+  min-width: 100px;
   min-height: 40px;
 }
 .btn-outline-primary:hover,
@@ -69,7 +69,15 @@ input,
 
 // overides for small devices
 @media (max-width: 576px) {
-    .form {
-      max-width: 95vw;
-    }
+  .form {
+    max-width: 95vw;
+  }
+}
+
+// overides for small devices
+@media (min-width: 576px) {
+  .btn-primary, .btn-outline-primary {
+    min-width: 150px;
+    min-height: 40px;
+  }
 }
