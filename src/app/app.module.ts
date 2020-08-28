@@ -1,3 +1,6 @@
+import { MatTabsModule } from '@angular/material/tabs';
+import { Logger } from './shared/services/logger.service';
+import { PrettyPrinter } from './code/pretty-printer.service';
 import { CodeTabsModule } from './code/code-tabs.module';
 import { CodeExampleModule } from './code/code-example.module';
 import { CodeComponent } from './code/code.component';
@@ -10,7 +13,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
-  faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faStarHalfAlt, faArrowRight, faUpload, faVideo,
+  faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faStarHalfAlt, faArrowRight, faUpload, faVideo, faCopy,
   faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash, faSignInAlt, faSignOutAlt, faUserPlus, faCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { HomeComponent } from './home/home.component';
@@ -43,6 +46,9 @@ import { DayTenComponent } from './resource-pages/day-ten/day-ten.component';
 import { DayElevenComponent } from './resource-pages/day-eleven/day-eleven.component';
 import { DayFiveComponent } from './resource-pages/day-five/day-five.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { HighlightPlusModule } from 'ngx-highlightjs/plus';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,17 +87,28 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     CodeModule,
     CodeExampleModule,
     CodeTabsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    HighlightPlusModule,
+    MatTabsModule,
+    ClipboardModule
   ],
   providers: [
     UserService,
     MovieService,
     LocalStorageService,
+    PrettyPrinter,
+    Logger,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationHeaderService,
       multi: true
     },
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js'),
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })
@@ -100,7 +117,7 @@ export class AppModule {
     private library: FaIconLibrary
   ) {
     this.library.addIcons(faVideo, faCircle, faSpinner, faAngleLeft, faAngleRight, faPlus, faStar, faStarHalfAlt, faArrowRight, faUpload,
-      faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash, faSignInAlt, faSignOutAlt, faUserPlus)
+      faEdit, faPen, faTrashAlt, faSearch, faUser, faKey, faEye, faEyeSlash, faSignInAlt, faSignOutAlt, faUserPlus, faCopy)
   }
  }
 

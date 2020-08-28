@@ -4,7 +4,7 @@ import { CodeTabsComponent } from './code-tabs.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CodeModule } from './code.module';
-import { WithCustomElementComponent } from '../element-registry';
+import { WithCustomElementComponent } from './element-registry';
 
 @NgModule({
   imports: [ CommonModule, MatCardModule, MatTabsModule, CodeModule ],

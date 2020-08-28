@@ -3,10 +3,33 @@
         <div class="card w-100 mt-5">
             <div class="card-body">
                 <h2>Day Four Resources</h2>
-                <code-example
-                path="src/app/signup/signup.component.html"
-                header="signup/signup.component.html">
-            </code-example>
+                <p>Login Component</p>
+                <mat-tab-group>
+                    <mat-tab label="src/app/login/login.component.ts">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="copyComponentCode()"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="componentCode" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="src/app/login/login.component.scss">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="copyComponentCode()"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="componentCss" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>        
             </div>
         </div>
     </div>
