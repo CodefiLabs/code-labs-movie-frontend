@@ -1,3 +1,7 @@
+import { CodeTabsModule } from './code/code-tabs.module';
+import { CodeExampleModule } from './code/code-example.module';
+import { CodeComponent } from './code/code.component';
+import { CodeModule } from './code/code.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -30,7 +34,15 @@ import { TimeAgoPipe } from './shared/pipes/time-ago.pipe';
 import { NewReviewComponent } from './reviews/new-review/new-review.component';
 import { MovieReviewsComponent } from './movies/movie-reviews/movie-reviews.component';
 import { SingleReviewCardComponent } from './movies/single-review-card/single-review-card.component';
-
+import { DayFourComponent } from './resource-pages/day-four/day-four.component';
+import { DaySixComponent } from './resource-pages/day-six/day-six.component';
+import { DaySevenComponent } from './resource-pages/day-seven/day-seven.component';
+import { DayEightComponent } from './resource-pages/day-eight/day-eight.component';
+import { DayNineComponent } from './resource-pages/day-nine/day-nine.component';
+import { DayTenComponent } from './resource-pages/day-ten/day-ten.component';
+import { DayElevenComponent } from './resource-pages/day-eleven/day-eleven.component';
+import { DayFiveComponent } from './resource-pages/day-five/day-five.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +59,15 @@ import { SingleReviewCardComponent } from './movies/single-review-card/single-re
     TimeAgoPipe,
     NewReviewComponent,
     MovieReviewsComponent,
-    SingleReviewCardComponent
+    SingleReviewCardComponent,
+    DayFourComponent,
+    DaySixComponent,
+    DaySevenComponent,
+    DayEightComponent,
+    DayNineComponent,
+    DayTenComponent,
+    DayElevenComponent,
+    DayFiveComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +77,11 @@ import { SingleReviewCardComponent } from './movies/single-review-card/single-re
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    ImageCropperModule
+    ImageCropperModule,
+    CodeModule,
+    CodeExampleModule,
+    CodeTabsModule,
+    NoopAnimationsModule
   ],
   providers: [
     UserService,
