@@ -3,7 +3,7 @@
         <div class="card w-100 mt-5">
             <div class="card-body">
                 <h2>Day Four Resources</h2>
-                <p>Signup Component & Styles.scss</p>
+                <p>Signup Component & Styles.scss & MustMatch.validator.ts</p>
                 <mat-tab-group>
                     <mat-tab label="src/app/signup/signup.component.html">
                         <div class="row">
@@ -38,6 +38,18 @@
                         <div class="row">
                             <div class="col-12">
                                 <pre><code [highlight]="stylesScss" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="New File: src/app/signup/must-match.validator.ts">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon #copy2Icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="mustMatchValidator"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="mustMatchValidator" [lineNumbers]="true"></code></pre>
                             </div>
                         </div>
                     </mat-tab>
