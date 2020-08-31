@@ -3,29 +3,41 @@
         <div class="card w-100 mt-5">
             <div class="card-body">
                 <h2>Day Four Resources</h2>
-                <p>Login Component</p>
+                <p>Signup Component</p>
                 <mat-tab-group>
-                    <mat-tab label="src/app/login/login.component.ts">
+                    <mat-tab label="src/app/signup/signup.component.html">
                         <div class="row">
                             <div class="col-12 text-right mt-2 mb-2">
-                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="copyComponentCode()"></fa-icon>
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="componentCode"></fa-icon>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <pre><code [highlight]="componentCode" [lineNumbers]="true"></code></pre>
+                                <pre><code [highlight]="componentHtml" [lineNumbers]="true"></code></pre>
                             </div>
                         </div>
                     </mat-tab>
-                    <mat-tab label="src/app/login/login.component.scss">
+                    <mat-tab label="src/app/signup/signup.component.scss">
                         <div class="row">
                             <div class="col-12 text-right mt-2 mb-2">
-                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="copyComponentCode()"></fa-icon>
+                                <fa-icon #copy2Icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="componentCss"></fa-icon>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <pre><code [highlight]="componentCss" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="src/styles.scss">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon #copy2Icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="componentCss"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="stylesScss" [lineNumbers]="true"></code></pre>
                             </div>
                         </div>
                     </mat-tab>

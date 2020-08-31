@@ -104,11 +104,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 `
   componentCss = `
-  
+
   .form {
     margin: 0px auto;
-    max-width: 500px;
-    box-shadow: 0px 3px 19px #0000000D;
+    max-width: 600px;
+    box-shadow: 0px 3px 19px #0000000d;
     .label {
       font-family: 'Raleway';
       font-weight: bold;
@@ -118,10 +118,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   
   h2 {
-    font-family: 'Bitter';
-    font-weight: bold;
-    font-size: 38px;
-    color: #777777;
+      font-family: 'Bitter';
+      font-weight: bold;
+      font-size: 38px;
+      color: #777777;
   }
   
   .form-bottom-p {
@@ -130,12 +130,205 @@ export class LoginComponent implements OnInit, OnDestroy {
     font-size: 16px;
     color: #777777;
   }
-
   .form-link {
     color: #ff4436;
     text-decoration: underline;
   }
   
+  `
+  componentHtml = `
+  <div class="row">
+    <div class="col-12 mt-5 pt-lg-5">
+        <form class="form p-5 mb-5 mt-lg-5" [formGroup]="form">
+              <ngb-alert class="text-center" *ngIf="errorMsg" type="danger" (close)="errorMsg = null">{{ errorMsg }}
+              </ngb-alert>
+              <h2 class="mb-5">Sign Up</h2>
+              <div class="form-group row">
+                <div class="col-6">
+                    <label class="label">First Name</label>
+                    <input [ngClass]="{'is-invalid': hasError && form.get('firstName').errors}" class="form-control"
+                      type="text" formControlName="firstName"
+                      placeholder="Jane">
+                    <label class="form-error" *ngIf="hasError && form.get('firstName').errors">
+                      <span class="text-danger" *ngIf="form.get('firstName').errors['required']" >
+                        First Name is required!
+                      </span>
+                    </label>
+                </div>
+                <div class="col-6">
+                    <label class="label">Last Name</label>
+                    <input [ngClass]="{'is-invalid': hasError && form.get('lastName').errors}" class="form-control"
+                      type="text" formControlName="lastName"
+                      placeholder="Doe">
+                    <label class="form-error" *ngIf="hasError && form.get('lastName').errors">
+                      <span class="text-danger" *ngIf="form.get('lastName').errors['required']" >
+                        Last Name is required!
+                      </span>
+                    </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="label">Nickname</label>
+                <input [ngClass]="{'is-invalid': hasError && form.get('nickName').errors}" class="form-control"
+                  type="text" formControlName="nickName"
+                  placeholder="Doe">
+                <label class="form-error" *ngIf="hasError && form.get('nickName').errors">
+                  <span class="text-danger" *ngIf="form.get('nickName').errors['required']" >
+                    Nickname is required!
+                  </span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="label">Email</label>
+                <input [ngClass]="{'is-invalid': hasError && form.get('email').errors}" class="form-control"
+                  type="email" formControlName="email"
+                  placeholder="you@youremailaddress.com">
+                <label class="form-error" *ngIf="hasError && form.get('email').errors">
+                  <span class="text-danger" *ngIf="form.get('email').errors['required']" >
+                    Email is required!
+                  </span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="label">Password</label>
+                <input [ngClass]="{'is-invalid': hasError && form.get('password').errors}" class="form-control"
+                  type="password" formControlName="password"
+                  placeholder="xxxxxxxxx">
+                <label class="form-error" *ngIf="hasError && form.get('password').errors">
+                  <span class="text-danger" *ngIf="form.get('password').errors['required']" >
+                    Password is required!
+                  </span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="label">Password</label>
+                <input [ngClass]="{'is-invalid': hasError && form.get('passwordConfirmation').errors}" class="form-control"
+                  type="password" formControlName="passwordConfirmation"
+                  placeholder="xxxxxxxxx">
+                  <label class="form-error" *ngIf="hasError && form.get('passwordConfirmation').errors">
+                    <span class="text-danger">
+                        Password Confirmation is required!
+                    </span>
+                </label>
+                <label class="form-error" 
+                    *ngIf="f.passwordConfirmation.errors && f.passwordConfirmation.errors.mustMatch">
+                    <span class="text-danger">
+                        Password and Password Confirmation Must Match.
+                    </span>
+                </label>
+              </div>
+              <div class="form-footer-btns form-group mt-5 mb-2 row">
+                  <div class="col-6">
+                    <button type="submit" class="btn btn-primary btn-block" (click)="submitForm()">Register<fa-icon
+                        *ngIf="submitting" [icon]="['fas', 'spinner']" size="lg" class="ml-2 fa-spinner" spin="true">
+                      </fa-icon></button>
+                  </div>
+                  <div class="col-6">
+                    <button type="submit" class="btn btn-outline-primary btn-block" (click)="cancelForm()">Cancel<fa-icon
+                        *ngIf="submitting" [icon]="['fas', 'spinner']" size="lg" class="ml-2 fa-spinner" spin="true">
+                      </fa-icon></button>
+                  </div>
+              </div>
+              <div class="col-12 text-center mt-4 p-0">
+                  <p class="form-bottom-p">Already signed up? <a class="form-link" [routerLink]="['/login']">Sign in here</a></p>
+              </div>
+          </form>
+    </div>
+</div>
+`
+
+  stylesScss = `
+  /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+// Importing Needed Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Montserrat&family=Raleway:ital,wght@0,500;0,700;1,500&display=swap");
+
+@import '~highlight.js/styles/vs2015.css';
+
+
+
+// Notes on font usage
+// font-family: 'Bitter', serif;
+// available font-weights: 700/bold
+// font-family: 'Montserrat', sans-serif;
+// available font-weights: 400/regular
+// font-family: 'Raleway', sans-serif;
+// available font-weights: 500 italic, 500, 700/bold
+
+// Overiding Boostrap Card Styles
+.card {
+  box-shadow: 0px 3px 19px #0000000d;
+  border-radius: 5px;
+  border: none;
+}
+// Overiding Bootstrap Button Styles
+.btn-primary {
+  font-family: "Raleway";
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: white;
+  background: rgb(255, 68, 54);
+  border: rgb(255, 68, 54);
+  border-radius: 25px;
+  min-width: 100px;
+  min-height: 40px;
+}
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled):active {
+  color: white;
+  background: darken(rgb(255, 68, 54), 10%);
+  border: darken(rgb(255, 68, 54), 10%);
+  border-radius: 25px;
+}
+.btn-outline-primary {
+  font-family: "Raleway";
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: rgb(255, 68, 54);
+  background: transparent;
+  border-color: rgb(255, 68, 54);
+  border-radius: 25px;
+  border-width: 2px;
+  min-width: 100px;
+  min-height: 40px;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+  color: darken(rgb(255, 68, 54), 10%);
+  background: transparent;
+  border-color: darken(rgb(255, 68, 54), 10%);
+  border-radius: 25px;
+}
+
+// input overide
+input,
+.form-control {
+  border-radius: 25px !important;
+}
+
+// overides for small devices
+@media (max-width: 576px) {
+  .form {
+    max-width: 95vw;
+  }
+}
+
+// overides for small devices
+@media (min-width: 576px) {
+  .btn-primary, .btn-outline-primary {
+    min-width: 150px;
+    min-height: 40px;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
   `
   constructor(
     private http: HttpClient
@@ -147,7 +340,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   copyComponentCode() {
-    
+
   }
 
 }
