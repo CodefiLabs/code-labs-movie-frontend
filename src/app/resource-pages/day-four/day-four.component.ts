@@ -201,7 +201,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                 </label>
               </div>
               <div class="form-group">
-                <label class="label">Password</label>
+                <label class="label">Password Confirmation</label>
                 <input [ngClass]="{'is-invalid': hasError && form.get('passwordConfirmation').errors}" class="form-control"
                   type="password" formControlName="passwordConfirmation"
                   placeholder="xxxxxxxxx">
