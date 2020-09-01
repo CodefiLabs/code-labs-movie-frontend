@@ -17,6 +17,18 @@
                             </div>
                         </div>
                     </mat-tab>
+                    <mat-tab label="src/app/shared/models/user.ts">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="userModelCode"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="userModelCode" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
                 </mat-tab-group>        
             </div>
         </div>
