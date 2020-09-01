@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DayFiveComponent implements OnInit {
   localStorageCode = `
-  import { Injectable, Inject, PLATFORM_ID } from '@angular/core'
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core'
 import { isPlatformBrowser } from '@angular/common'
 
 @Injectable({
