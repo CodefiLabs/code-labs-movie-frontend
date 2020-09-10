@@ -1,1 +1,84 @@
-<p>day-seven works!</p>
+<div class="container mb-3">
+    <div class="row card-row">
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+                <h2>Day Four Resources</h2>
+                <p>Local Storage Service</p>
+                <mat-tab-group>
+                    <mat-tab label="src/app/movies/single-movie/single-movie.commponent.html">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="singleMovieHtml"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="singleMovieHtml" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="src/app/movies/single-movie/single-movie.commponent.scss">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="singleMovieScss"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="singleMovieScss" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="src/app/movies/input-star-rating/input-star-rating.commponent.html">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="inputStarRatingHtml"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="singleMovieScss" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="src/app/movies/input-star-rating/input-star-rating.commponent.scss">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="inputStarRatingScss"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="inputStarRatingScss" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="src/app/movies/review-card/review-card.commponent.html">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="reviewCardHtml"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="reviewCardHtml" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="src/app/movies/review-card/review-card.commponent.scss">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x" [cdkCopyToClipboard]="reviewCardScss"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="reviewCardScss" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>        
+            </div>
+        </div>
+    </div>
+</div>
