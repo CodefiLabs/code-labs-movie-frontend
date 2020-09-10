@@ -1,3 +1,4 @@
+import { Movie } from 'src/app/shared/models/movie';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -19,8 +20,8 @@ export class MovieService {
     return this.http.get<any>(`${this.movieApi}/get_upload_credentials`);
   }
 
-  getAllMovies() {
-    return this.http.get<any>(`${this.movieApi}/index`);
+  getAllMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(`${this.movieApi}/index`);
   }
 
   getMovieById(params) {

@@ -4,6 +4,19 @@
             <div class="card-body">
                 <h2>Day Seven Resources</h2>
                 <mat-tab-group>
+                    <mat-tab label="src/app/shared/models/review.ts">
+                        <div class="row">
+                            <div class="col-12 text-right mt-2 mb-2">
+                                <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x"
+                                    [cdkCopyToClipboard]="reviewModel"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <pre><code [highlight]="reviewModel" [lineNumbers]="true"></code></pre>
+                            </div>
+                        </div>
+                    </mat-tab>
                     <mat-tab label="src/app/movies/single-movie/single-movie.commponent.html">
                         <div class="row">
                             <div class="col-12 text-right mt-2 mb-2">
