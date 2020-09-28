@@ -1,1 +1,63 @@
-<p>day-eight works!</p>
+<div class="container mb-3">
+  <div class="row card-row">
+      <div class="card w-100 mt-5">
+          <div class="card-body">
+              <h2>Day Seven Resources</h2>
+              <mat-tab-group>
+                  <mat-tab label="src/app/movies/movie-reviews/movie-reviews.component.html">
+                      <div class="row">
+                          <div class="col-12 text-right mt-2 mb-2">
+                              <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x"
+                                  [cdkCopyToClipboard]="allReviewsHtml"></fa-icon>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                              <pre><code [highlight]="allReviewsHtml" [lineNumbers]="true"></code></pre>
+                          </div>
+                      </div>
+                  </mat-tab>
+                  <mat-tab label="src/app/movies/movie-reviews/movie-reviews.component.scss">
+                      <div class="row">
+                          <div class="col-12 text-right mt-2 mb-2">
+                              <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x"
+                                  [cdkCopyToClipboard]="allReviewsScss"></fa-icon>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                              <pre><code [highlight]="allReviewsScss" [lineNumbers]="true"></code></pre>
+                          </div>
+                      </div>
+                  </mat-tab>
+                  <mat-tab label="src/app/movies/single-review/single-review.component.html">
+                      <div class="row">
+                          <div class="col-12 text-right mt-2 mb-2">
+                              <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x"
+                                  [cdkCopyToClipboard]="singleReviewHtml"></fa-icon>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                              <pre><code [highlight]="singleReviewHtml" [lineNumbers]="true"></code></pre>
+                          </div>
+                      </div>
+                  </mat-tab>
+                  <mat-tab label="src/app/movies/single-review/single-review.component.scss">
+                      <div class="row">
+                          <div class="col-12 text-right mt-2 mb-2">
+                              <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x"
+                                  [cdkCopyToClipboard]="singleReviewScss"></fa-icon>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                              <pre><code [highlight]="singleReviewScss" [lineNumbers]="true"></code></pre>
+                          </div>
+                      </div>
+                  </mat-tab>
+              </mat-tab-group>
+          </div>
+      </div>
+  </div>
+</div>
