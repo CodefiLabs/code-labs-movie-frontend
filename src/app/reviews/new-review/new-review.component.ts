@@ -35,6 +35,8 @@ export class NewReviewComponent implements OnInit, OnDestroy {
     { id: 4, val: 4 },
     { id: 5, val: 5 },
   ];
+  isNew = false
+  isEdit = false
   private subs = new Subscription();
   constructor(
     private router: Router,

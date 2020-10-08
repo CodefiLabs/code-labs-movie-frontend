@@ -1,1 +1,37 @@
-<p>day-nine works!</p>
+<div class="container mb-3">
+  <div class="row card-row">
+      <div class="card w-100 mt-5">
+          <div class="card-body">
+              <h2>Day Nine Resources</h2>
+              <mat-tab-group>
+                  <mat-tab label="src/app/movies/movie-reviews/movie-reviews.component.html">
+                      <div class="row">
+                          <div class="col-12 text-right mt-2 mb-2">
+                              <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x"
+                                  [cdkCopyToClipboard]="reviewComponentHtml"></fa-icon>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                              <pre><code [highlight]="reviewComponentHtml" [lineNumbers]="true"></code></pre>
+                          </div>
+                      </div>
+                  </mat-tab>
+                  <mat-tab label="src/app/movies/movie-reviews/movie-reviews.component.scss">
+                      <div class="row">
+                          <div class="col-12 text-right mt-2 mb-2">
+                              <fa-icon [icon]="['fas', 'copy']" class="copy-icon" size="2x"
+                                  [cdkCopyToClipboard]="reviewComponentScss"></fa-icon>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                              <pre><code [highlight]="reviewComponentScss" [lineNumbers]="true"></code></pre>
+                          </div>
+                      </div>
+                  </mat-tab>
+              </mat-tab-group>
+          </div>
+      </div>
+  </div>
+</div>
