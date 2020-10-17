@@ -1,3 +1,4 @@
+import { Review } from './../../shared/models/review';
 import { Movie } from 'src/app/shared/models/movie';
 import { MovieService } from './../../shared/services/movie.service';
 import { ReviewService } from './../../shared/services/review.service';
@@ -37,6 +38,8 @@ export class NewReviewComponent implements OnInit, OnDestroy {
   ];
   isNew = false
   isEdit = false
+  reviewId: number
+  review: Review
   private subs = new Subscription();
   constructor(
     private router: Router,
@@ -60,7 +63,35 @@ export class NewReviewComponent implements OnInit, OnDestroy {
       if (data && data.id) {
         this.retrieveMovie(data.id)
       }
+      if (data && data.reviewId) {
+        this.reviewId = data.reviewId
+        this.isEdit = true
+        this.retrieveReview(data.reviewId)
+      } else {
+        this.isNew = true
+      }
     })
+  }
+
+  retrieveReview(id: number) {
+    const params = { id: id }
+    this.subs.add(
+      this.reviewService.getReviewById(params).subscribe(data => {
+        if (data) {
+          this.review = data
+          this.setFormValues(this.review)
+        }
+      }, error => {
+        if (error) {
+          console.error(error)
+        }
+      })
+    )
+  }
+
+  setFormValues(review: Review) {
+    this.form.get('body').setValue(review.body)
+    this.form.get('starRating').setValue(review.rating)
   }
 
   retrieveMovie(id: number) {
@@ -106,6 +137,14 @@ export class NewReviewComponent implements OnInit, OnDestroy {
       return;
     }
     const form = this.form.value;
+    if (this.isEdit) {
+      this.updateReview(form)
+    } else {
+      this.createNewReview(form)
+    }
+  }
+
+  createNewReview(form: any) {
     const params = {
       user_id: this.currentUser.id,
       movie_id: this.movie.id,
@@ -135,6 +174,43 @@ export class NewReviewComponent implements OnInit, OnDestroy {
             this.hasError = true;
             this.errorMsg =
               'Something went wrong while trying to create that review!!';
+          }
+        }
+      )
+    );
+  }
+
+  updateReview(form: any) {
+    const params = {
+      review_id: this.reviewId,
+      user_id: this.currentUser.id,
+      movie_id: this.movie.id,
+      user_nickname: this.currentUser.nickname,
+      rating: form.starRating,
+      body: form.body
+    };
+    this.subs.add(
+      this.reviewService.updateReview(params).subscribe(
+        (data) => {
+          if (data) {
+            this.submitting = false
+            Swal.fire({
+              icon: 'success',
+              title: 'Your review has been successfully updated!',
+              showConfirmButton: false,
+              timer: 2000
+            }).then(() => {
+              this.form.reset()
+            })
+          }
+        },
+        (error) => {
+          if (error) {
+            console.log(error);
+            this.submitting = false;
+            this.hasError = true;
+            this.errorMsg =
+              'Something went wrong while trying to update that review!!';
           }
         }
       )

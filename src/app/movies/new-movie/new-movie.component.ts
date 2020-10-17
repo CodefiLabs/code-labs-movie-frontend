@@ -13,7 +13,6 @@ import { User } from '../../shared/models/user';
 import { Router } from '@angular/router';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 import Swal from 'sweetalert2';
-import { setClassMetadata } from '@angular/core/src/r3_symbols';
 
 @Component({
   selector: 'app-new-movie',
@@ -59,6 +58,7 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     this.getS3Keys()
     this.createFormControls();
     this.createForm();
+
   }
 
   getS3Keys() {

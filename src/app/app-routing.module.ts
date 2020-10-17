@@ -51,7 +51,7 @@ const routes: Routes = [
     component: NewReviewComponent
   },
   {
-    path: 'reviews/:id/edit',
+    path: 'reviews/:id/edit/:reviewId',
     component: NewReviewComponent
   },
   {
