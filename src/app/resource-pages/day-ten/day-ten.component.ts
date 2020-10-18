@@ -253,6 +253,61 @@ newMovieScss = `
 
 `
 
+extraMethods = `
+openFileInput() {
+  this.fileInput.nativeElement.click();
+}
+
+onSelectImage($event: ImageCroppedEvent) {
+  this.imageChangedEvent = $event;
+}
+
+fileChangeEvent(event: any): void {
+  this.imageChangedEvent = event;
+}
+
+// ngx-image-cropper-methods
+
+onImageCropChanged(event: ImageCroppedEvent) {
+  this.croppedImage = event.base64;
+}
+
+onImageCropClicked() {
+  this.form.get('img').setValue(this.croppedImage);
+  this.imageChangedEvent = null;
+}
+
+uploadImage() {
+  let title;
+  title = this.form.get('title').value; // grabbing the title value from form
+  title = title.replace(/\s/g, '-'); // replaces spaces in title w/ '-'
+  title = title.toLowerCase(); // Lower Case the title
+  const name = title
+    ? title
+    : this.generateRandomString(14, '0123456789abcd'); // sets img name key or assigns random string
+  this.movieService.uploadMovieImage(this.croppedImage, name, this.accessKey, this.secretKey);
+  this.form
+    .get('img')
+    .setValue(
+      'https://code-labs-one-movie-images.s3.us-east-2.amazonaws.com/images/' +
+        name
+    );
+  return true;
+}
+
+generateRandomString(length, chars) {
+  let result = '';
+  for (let i = length; i > 0; --i) {
+    result += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return result;
+}
+
+cancel() {
+  this.form.reset();
+}
+`
+
 newMovieComponent = `
 
 `

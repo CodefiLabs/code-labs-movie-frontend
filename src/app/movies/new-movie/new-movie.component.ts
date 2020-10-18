@@ -198,18 +198,6 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     return result;
   }
 
-  imageLoaded() {
-    // show cropper
-  }
-
-  cropperReady() {
-    // cropper ready
-  }
-
-  loadImageFailed() {
-    // show message
-  }
-
   cancel() {
     this.form.reset();
   }
