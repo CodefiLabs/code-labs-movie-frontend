@@ -66,8 +66,9 @@ export class MovieReviewsComponent implements OnInit, OnDestroy {
     this.reviews.forEach(x => {
       totalRating += x.rating
     })
-    this.avgMovieRating = ( totalRating / totalReviews )
+    this.avgMovieRating = Math.round((totalRating / totalReviews) * 2) / 2
   }
+
 
   setDefaultPic() {
     this.movieImg = 'assets/images/batman-vs-godzilla.png'
